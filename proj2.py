@@ -10,42 +10,42 @@ print('New York Times -- First 10 Story Headings\n')
 import requests
 from bs4 import BeautifulSoup, SoupStrainer
  
-# base_url1 = 'http://www.nytimes.com'
-# r1 = requests.get(base_url1)
-# soup1 = BeautifulSoup(r1.text,"html.parser")
+base_url1 = 'http://www.nytimes.com'
+r1 = requests.get(base_url1)
+soup1 = BeautifulSoup(r1.text,"html.parser")
 
-# for story_heading in soup1.find_all(class_="story-heading")[:10]: 
-#     if story_heading.a: 
-#         print(story_heading.a.text.replace("\n", " ").strip())
-#     else: 
-#         print(story_heading.contents[0].strip())
+for story_heading in soup1.find_all(class_="story-heading")[:10]: 
+    if story_heading.a: 
+        print(story_heading.a.text.replace("\n", " ").strip())
+    else: 
+        print(story_heading.contents[0].strip())
 
-# #### Problem 2 ####
-# print('\n*********** PROBLEM 2 ***********')
-# print('Michigan Daily -- MOST READ\n')
+#### Problem 2 ####
+print('\n*********** PROBLEM 2 ***********')
+print('Michigan Daily -- MOST READ\n')
 
-# ### Your Problem 2 solution goes here
-# base_url2 = 'https://www.michigandaily.com'
-# r2 = requests.get(base_url2)
-# soup2 = BeautifulSoup(r2.text,"html.parser")
-# panel_div = soup2.find_all(class_="panel-pane pane-mostread")
-# for headline in panel_div[0].find_all("a"): 
-#  	print(headline.text.replace("\n", " ").strip())
+### Your Problem 2 solution goes here
+base_url2 = 'https://www.michigandaily.com'
+r2 = requests.get(base_url2)
+soup2 = BeautifulSoup(r2.text,"html.parser")
+panel_div = soup2.find_all(class_="panel-pane pane-mostread")
+for headline in panel_div[0].find_all("a"): 
+ 	print(headline.text.replace("\n", " ").strip())
 
 
-# #### Problem 3 ####
-# print('\n*********** PROBLEM 3 ***********')
-# print("Mark's page -- Alt tags\n")
+#### Problem 3 ####
+print('\n*********** PROBLEM 3 ***********')
+print("Mark's page -- Alt tags\n")
 
-# ### Your Problem 3 solution goes here
-# base_url3 = 'http://newmantaylor.com/gallery.html'
-# r3 = requests.get(base_url3)
-# soup3 = BeautifulSoup(r3.text,"html.parser")
-# for img in soup3.find_all("img"):
-# 	if len(img.get('alt', '')):
-# 		print(img.get('alt', ''))
-# 	else:
-# 		print("No alternative text provided!")
+### Your Problem 3 solution goes here
+base_url3 = 'http://newmantaylor.com/gallery.html'
+r3 = requests.get(base_url3)
+soup3 = BeautifulSoup(r3.text,"html.parser")
+for img in soup3.find_all("img"):
+	if len(img.get('alt', '')):
+		print(img.get('alt', ''))
+	else:
+		print("No alternative text provided!")
 
 #### Problem 4 ####
 print('\n*********** PROBLEM 4 ***********')

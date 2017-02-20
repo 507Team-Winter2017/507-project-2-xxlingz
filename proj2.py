@@ -55,7 +55,7 @@ print("UMSI faculty directory emails\n")
 contact = []
 for i in range(6):
     base_ur4 = "https://www.si.umich.edu/directory?field_person_firstname_value=&field_person_lastname_value=&rid=4&page={}".format(i)
-    r4 = requests.get(base_ur4)
+    r4 = requests.get(base_ur4,headers={'User-Agent': 'SI_CLASS'})
     soup_link = BeautifulSoup(r4.text,"html.parser")
     links_bs = soup_link.find_all(class_="field field-name-contact-details field-type-ds field-label-hidden")
     for links in links_bs:
@@ -64,7 +64,7 @@ for i in range(6):
             contact.append(a[0]['href'])
 for professor in contact:
     base_ur5 = "https://www.si.umich.edu"+professor
-    r5 = requests.get(base_ur5)
+    r5 = requests.get(base_ur5,headers={'User-Agent': 'SI_CLASS'})
     soup_email = BeautifulSoup(r5.text,"html.parser")
     links_email = soup_email.find_all(class_="field field-name-field-person-email field-type-email field-label-inline clearfix")
     for email in links_email[0].find_all("a"): 
